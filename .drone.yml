@@ -7,6 +7,7 @@ build:
   environment:
     - UID=1000
     - GID=1000
+    - TERM=xterm
   commands:
     - chmod +x gen_rootfs.sh
     - ./gen_rootfs.sh -v 2.7 -b xataz/alpine -p
