@@ -137,7 +137,7 @@ f_gen_dockerfile() {
 }
 
 ## Check if version exist
-curl ${MIRROR}/ | grep ${ALPINE_VER} > /dev/null 2>&1
+curl ${MIRROR}/ 2> /dev/null | grep ${ALPINE_VER} > /dev/null 2>&1
 [ $? -ne 0 ] && (f_log ERR "Build ${BUILD_NAME}:${ALPINE_VER} failed"; exit 1)
 
 if [ "${FORCE}" != "true" ]; then

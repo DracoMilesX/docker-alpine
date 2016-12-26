@@ -16,4 +16,5 @@ build:
     - ./gen_rootfs.sh -v 3.3 -b xataz/alpine -p
     - ./gen_rootfs.sh -v 3.4 -b xataz/alpine -p
     - ./gen_rootfs.sh -v 3.5 -b xataz/alpine -p
-    - ./gen_rootfs.sh -v 3.6 -b xataz/alpine -p
+    - ./gen_rootfs.sh -v edge -b xataz/alpine -p
+  tty: true
