@@ -33,8 +33,7 @@ f_check_maj() {
     f_log INF "Download ${IMAGE_NAME}:${ALPINE_VER}"
     docker pull ${IMAGE_NAME}:${ALPINE_VER} > /dev/null 2>&1
     f_log INF "Check if ${IMAGE_NAME}:${ALPINE_VER} is up to date"
-    LIST_MAJ=$(docker run -ti --rm ${DOCKER_ENV} ${IMAGE_NAME}:${ALPINE_VER} apk version --no-cache)
-    CHECK_MAJ=$(echo ${LIST_MAJ} | grep -v -e ^fetch -e ^Installed | wc -l)
+    CHECK_MAJ=$(docker run -ti --rm ${DOCKER_ENV} ${IMAGE_NAME}:${ALPINE_VER} apk version -U | grep -v -e ^fetch -e ^Installed | wc -l)
     if [ ${CHECK_MAJ} -gt 0 ]; then
         UPDATE="true"
         f_log INF "${IMAGE_NAME}:${ALPINE_VER} is not up to date"
@@ -58,7 +57,7 @@ f_gen_repos() {
                 REPOS="main testing"
             ;;
             "3.1")
-                REPOS="main testing"
+                REPOS="main"
             ;;
             "3.2")
                 REPOS="main"
